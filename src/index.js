@@ -16,6 +16,7 @@ client.on("message", (message) => {
     var user = message.author.username;
     if(mongo.isAdmin(user)){
       admins.push(user);
+      message.reply(user + " has logged in.");
       console.log(user + " has logged in.");
     }
   }

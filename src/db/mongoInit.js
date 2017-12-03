@@ -12,7 +12,7 @@ MongoClient.connect(url, function(err, db) {
 
 
 
-  // db.collection('users').insertMany([
+  // db.collection('Users').insertMany([
   //   {
   //     "Username": "sleepy",
   //     "role": "user"
