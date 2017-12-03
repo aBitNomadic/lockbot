@@ -1,13 +1,13 @@
 var MongoClient = require('mongodb').MongoClient
   , assert = require('assert');
-
+var me = this;
 // Connection URL
 var url = require('../../botsecrets.json').mongoURI;
 
 exports.isAdmin = function(user){
     console.log('findAdmin');
 
-    MongoClient.connect(url, function(err, db) {
+    var result = MongoClient.connect(url, function(err, db) {
       assert.equal(null, err);
       db.collection('Users').find({
         $and: [
@@ -15,19 +15,18 @@ exports.isAdmin = function(user){
           {'role': 'admin'}
         ]
       }).toArray(function(err, result) {
-        if(err){
-          console.log(err);
-          throw err;
-        };
-        if(result){
-          console.log(user + " found for login in DB!")
-          return true;
-        } else {
-          console.log(user + " not found for login!")
-          return false;
-        }
+        if(err) throw err;
+        console.log("return results " + result);
+        return result;
       })
+      db.close;
     });
+    console.log("results: "+ result)
+    if (result){
+      console.log(user + " has logged in.")
+      return true;
+    }
+    return false;
   };
 
   exports.addStatment = function(kword, stmt){

@@ -12,8 +12,9 @@ client.on("ready", () => {
 });
 
 client.on("message", (message) => {
+  var user = message.author.username;
+  console.log(user);
   if (message.content.startsWith("!login")){
-    var user = message.author.username;
     if(mongo.isAdmin(user)){
       admins.push(user);
       message.reply(user + " has logged in.");
@@ -21,7 +22,7 @@ client.on("message", (message) => {
     }
   }
   else if (message.content.startsWith("!setText")){
-    if(admins.indexOf(message.author.username) != -1){
+    if(admins.indexOf(user) != -1){
       var smsg = message.content.split(" ", 2);
       var kword = smsg[1];
       var stmt = smsg.slice(nthIndex(smsg, " ", 3));
