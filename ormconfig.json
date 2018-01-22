@@ -1,0 +1,23 @@
+{
+  "type": "mysql",
+  "host": "localhost",
+  "port": 3306,
+  "username": "",
+  "password": "",
+  "database": "lockbot",
+  "synchronize": true,
+  "entities": [
+    "src/orm/entity/*.js"
+  ],
+  "subscribers": [
+    "src/orm/subscriber/*.js,"
+  ],
+  "migrations": [
+    "src/orm/migration/*.js"
+  ],
+  "cli": {
+    "entitiesDir": "src/orm/entity",
+    "migrationsDir": "src/orm/migration",
+    "subscribersDir": "src/orm/subscriber"
+  }
+}

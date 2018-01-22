@@ -1,14 +1,13 @@
-// const Discord = require("discord.js");
-// const client = new Discord.Client();
-// const secrets = require("../botsecrets.json");
-// const token = secrets.botToken;
-// const mongoClient = require("./db/mongoInit.js");
-
 import * as Discord from 'discord.js';
 import { botToken } from './botsecrets';
+import { createConnection } from 'typeorm';
+
 
 const client = new Discord.Client();
-var admins = new Array(); //mabye preload them here?
+
+createConnection().then(connection => {
+    console.log('Connected! '+ connection);
+}).catch(error => console.log(error));
 
 client.on("ready", () => {
   console.log("I am ready!");
@@ -50,13 +49,12 @@ client.on("message", (message) => {
 });
 
 client.login(botToken);
-
 //StackOverflow fo life1
 function nthIndex(str, pat, n){
-    var len = str.length, i= -1;
-    while(n-- && i++ < len){
-        i = str.indexOf(pat, i);
-        if (i < 0) break;
-    }
-    return i;
+  var len = str.length, i= -1;
+  while(n-- && i++ < len){
+    i = str.indexOf(pat, i);
+    if (i < 0) break;
+  }
+  return i;
 }
