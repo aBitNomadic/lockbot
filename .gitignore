@@ -1,6 +1,7 @@
 # Custom
-botsecrets.json
+botsecrets.ts
 mongodb/
+dist/
 # Logs
 logs
 *.log
