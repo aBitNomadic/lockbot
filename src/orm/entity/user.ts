@@ -1,17 +1,17 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class StockPrices {
+export class User {
 
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
+  @Column({ type: "varchar" })
   username: string;
 
-  @Column()
+  @Column({ type: "varchar" })
   isAdmin: boolean;
 
-  @Column()
+  @Column({ type: "varchar" })
   joindate: Date;
 }

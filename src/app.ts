@@ -1,6 +1,7 @@
 import * as Discord from 'discord.js';
 import { botToken } from './botsecrets';
 import { createConnection } from 'typeorm';
+import { CrudUser } from './users/crudUser';
 
 
 const client = new Discord.Client();
@@ -13,16 +14,21 @@ client.on("ready", () => {
   console.log("I am ready!");
 });
 
+//Remake code in Typescrpit formatting!
 client.on("message", (message) => {
-  var user = message.author.username;
-  console.log(user);
-  // if (message.content.startsWith("!login")){
+  let username = message.author.username;
+  if (message.content.startsWith("!login")){
   //   if(mongo.isAdmin(user)){
   //     admins.push(user);
   //     message.reply(user + " has logged in.");
   //     console.log(user + " has logged in.");
   //   }
-  // }
+} else if (message.content.startsWith("!addMe")){
+  let createUser = new CrudUser();
+  createUser.addNewUser(username).then(
+    message.reply("you have been added to the database!")
+  ).catch(error => console.log(error));
+}
   // else if (message.content.startsWith("!setText")){
   //   if(admins.indexOf(user) != -1){
   //     var smsg = message.content.split(" ", 2);
@@ -43,7 +49,7 @@ client.on("message", (message) => {
   //   }
   //
   // }
-  if (message.content.startsWith("ping")) {
+  else if (message.content.startsWith("ping")) {
     message.reply("pong!");
   }
 });

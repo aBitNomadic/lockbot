@@ -33,6 +33,7 @@
   },
   "devDependencies": {
     "concurrently": "^3.5.1",
+    "cross-env": "^5.1.4",
     "nodemon": "^1.12.1"
   }
 }
