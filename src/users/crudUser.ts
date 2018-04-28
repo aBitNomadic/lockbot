@@ -20,8 +20,6 @@ export class CrudUser {
     let user = await CrudUser.entityManager.createQueryBuilder(User, "user")
                                   .where("username = :inName", { inName: username })
                                   .getOne();
-    console.log(user);
+    return user.isAdmin;
   }
-
-
 }

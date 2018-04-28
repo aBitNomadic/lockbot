@@ -30,7 +30,12 @@ if (message.content.startsWith("!login")){
   }).catch(error => console.log(error));
 } else if (message.content.startsWith("!setText")){
   let findAdmin = new CrudUser();
-  await findAdmin.isAdmin(username).then((result) => {
+  findAdmin.isAdmin(username).then((result) => {
+    if(result){
+
+    }else{
+      message.reply("Sorry only admins can !setText")
+    }
   }).catch(error => console.log(error));
   // if(admins.indexOf(user) != -1){
   //   var smsg = message.content.split(" ", 2);
