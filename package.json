@@ -28,7 +28,7 @@
     "discord.js": "^11.2.1",
     "mysql": "^2.15.0",
     "reflect-metadata": "^0.1.10",
-    "typeorm": "^0.1.9",
+    "typeorm": "^0.1.15",
     "typescript": "^2.6.1"
   },
   "devDependencies": {
